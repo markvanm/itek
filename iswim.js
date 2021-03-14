@@ -1,3 +1,10 @@
+/*
+
+https://chrome.google.com/webstore/detail/css-and-javascript-inject/ckddknfdmcemedlmmebildepcmneakaa/related
+document.write('<script type="text/javascript" src="https://raw.githubusercontent.com/markvanm/itek/main/iswim.js"><\/script>');
+
+*/
+
 $('input[type="text"],textarea').keydown( function(e) {
     var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
 
