@@ -6,20 +6,6 @@ $("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/g
 
 */
 
-$('input[type="text"],textarea').keydown( function(e) {
-    var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-
-    if(key == 40) {
-        e.preventDefault();
-        var inputs = $(this).parents('form').find(':input[type="text"]:enabled:visible:not("disabled"),textarea');
-				
-        $(this).parent('tr').next('tr').find('')
-        inputs.eq( inputs.index(this)+ 1 ).focus();
-        inputs.eq( inputs.index(this)+ 1 ).click();
-    }
-});
-
-
 $(function () {
   $(':text').on('keydown', function (e) {
     var keyCode = e.keyCode || e.which;
