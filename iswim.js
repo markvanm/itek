@@ -1,19 +1,17 @@
 /*
-
 https://chrome.google.com/webstore/detail/css-and-javascript-inject/ckddknfdmcemedlmmebildepcmneakaa/related
-
 $("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/markvanm/itek/iswim.js"></script>');
-
 */
 
 $(function () {
   var keyCodes = [13,40,38,39,37];
   $(':text').on('keydown', function (e) {
-    if($(e.target).parent('div').hasClass('selector200'){
-      return true
+   
+    if($(e.target).parent('div').hasClass('selector200')){
+      return true;
      }
     var keyCode = e.keyCode || e.which;
-     
+       
     if (keyCodes.includes(keyCode)) { // on tab go to next input
       // prevent the default action
       e.preventDefault();
