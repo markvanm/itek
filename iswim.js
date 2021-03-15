@@ -4,7 +4,12 @@ $("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/g
 */
 
 $(function () {
-  var keyCodes = [13,40,38,39,37];
+  var keyCodes = [
+    13,40, // Arrow down, enter
+    38, // Arrow up
+    39, // Arrow right
+    37 // Arrow left
+  ];
   $(':text').on('keydown', function (e) {
    
     if($(e.target).parent('div').hasClass('selector200')){
