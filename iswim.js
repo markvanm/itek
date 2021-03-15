@@ -9,7 +9,7 @@ $("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/g
 $(function () {
   var keyCodes = [13,40,38,39,37];
   $(':text').on('keydown', function (e) {
-    if($(e.target).hasClass('nonvineyard'){
+    if($(e.target).parent('div').hasClass('selector200'){
       return true
      }
     var keyCode = e.keyCode || e.which;
