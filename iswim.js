@@ -7,11 +7,14 @@ $("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/g
 */
 
 $(function () {
-  
+  var keyCodes = [13,40,38,39,37];
   $(':text').on('keydown', function (e) {
+    if($(e.target).hasClass('nonvineyard'){
+      return true
+     }
     var keyCode = e.keyCode || e.which;
      
-    if (keyCode == 13 || keyCode == 40 || keyCode == 38 || keyCode == 39 || keyCode == 37) { // on tab go to next input
+    if (keyCodes.includes(keyCode)) { // on tab go to next input
       // prevent the default action
       e.preventDefault();
       
