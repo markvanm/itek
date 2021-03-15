@@ -1,7 +1,8 @@
 /*
 
 https://chrome.google.com/webstore/detail/css-and-javascript-inject/ckddknfdmcemedlmmebildepcmneakaa/related
-document.write('<script type="text/javascript" src="https://raw.githubusercontent.com/markvanm/itek/main/iswim.js"><\/script>');
+
+$("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/markvanm/itek/iswim.js"></script>');
 
 */
 
