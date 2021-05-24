@@ -1,5 +1,5 @@
 /*
-https://chrome.google.com/webstore/detail/scripty-javascript-inject/milkbiaeapddfnpenedfgbfdacpbcbam
+https://chrome.google.com/webstore/detail/css-js-injector/gamgadbdliolbhjdcfjjpjfjhgfnckbp/related?hl=nl
 $("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/markvanm/itek/iswim.js"></script>');
 */
 
