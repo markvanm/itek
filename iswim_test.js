@@ -6,18 +6,17 @@ function copyToDepartureOrArrival(where = 'arrival') {
 
   var inputs = {};
 	
-  var theTable = arrivalTable;
+  var theTable = departureTable;
   var replaceFrom = 'departure';
   var replaceTo = 'arrival';
   if (where == "departure") {
-  	theTable = departureTable;
+  	theTable = arrivalTable;
     replaceFrom = 'arrival';
     replaceTo = 'departure';    
   }
 
 
   theTable.find('input[type=text]').each(function() {
-
     var keyValue = $(this).attr('name');
     keyValue = keyValue.replace(replaceFrom, replaceTo);
     inputs[keyValue] = $(this).val();
@@ -25,8 +24,6 @@ function copyToDepartureOrArrival(where = 'arrival') {
 
   $.each(inputs, function(key, val) {
     var selectName = 'input[name="' + key + '"]';
-    console.log(selectName);
-    console.log(val);
     $(selectName).val(val);
   });
 
