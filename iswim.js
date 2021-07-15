@@ -4,6 +4,9 @@ $("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/g
 */
 
 $(function() {
+  
+  $('head').append('<style type="text/css">.tabBox .tabs .selected a{ background: #fff !important;color: #000;}</style>'); //changing style (now only tabs)  
+  
   var keyCodes = [
     13, 40, // Arrow down, enter
     38, // Arrow up
