@@ -1,6 +1,6 @@
 /*
 https://chrome.google.com/webstore/detail/injector/bfdonckegflhbiamlmidciapolfccmmb/related
-$("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/markvanm/itek/iswim.js"></script>');
+$("head").append('<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/markvanm/itek/iswim.js?' + Math.random().toString() + '"></script>');
 */
 
 $(function() {
