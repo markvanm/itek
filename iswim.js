@@ -58,7 +58,7 @@ $(function() {
       if (nextInput.length == 0) {
         return false;
       } else {
-        nextInput.eq(currentIndex).focus();
+        nextInput.eq(currentIndex).focus().select();
       }
     }
   });
