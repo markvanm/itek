@@ -128,5 +128,45 @@ $(function() {
     $('#tankDIV1').append(button);
   }
 
+  
+  
+  
+  function fillROB(){
+  for (let i = 0; i < 100; i++) {
+    $('input[name="currentReport.tanks['+i+'].entity.gaugeTrimCorrected"]').val('Nil');
+    $('input[name="currentReport.tanks['+i+'].entity.tov"]').val('0');
+    $('input[name="currentReport.tanks['+i+'].entity.freeWaterGauge"]').val('Nil');
+    $('input[name="currentReport.tanks['+i+'].entity.freeWaterVolume"]').val('0');
+    $('input[name="currentReport.tanks['+i+'].entity.temperature"]').val('15');
+    $('input[name="currentReport.tanks['+i+'].entity.methods.waterMethodOfgauge"]').val('Innage');
+
+     $("#liquidNonLiquidWedgeId"+i+" option[value='N/A']").attr('selected','selected').trigger('change');
+    
+     $("#gaugeTrimUncorrectedId"+i+" option[value='INNAGE TRIM CORRECTED']").attr('selected','selected').trigger('change');
+  }
+  
+  if($('#currentReport\\.report\\.detail\\.locationOfGauge').val() == '2 INCH GAUGE HATCH'){
+  	alert('Please select Location of Gauge!!!');
+  }
+}
+
+//currentReport.tanks0.entity.gaugeTrimCorrected
+var tableROB = $('input[name="currentReport.tanks[0].entity.gaugeTrimCorrected"]').closest('table');
+   
+ if(tableROB.length>0){ 
+ 
+ var button = $('<div class="button" id="uniform-undefined"><span>Click for if tanks are empty<input name="btnSelectFormGroup" tabindex="200" class="btnAddforms" type="button" value="Sort Tanks" style="opacity: 0;"></span></div>');
+
+    button.click(function() {
+      fillROB();
+    });
+    
+     $('#tanksDiv .group_600').append(button);
+ 
+ 
+}
+
+  
+  
 
 });
