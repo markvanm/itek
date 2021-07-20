@@ -1,48 +1,70 @@
-function copyToDepartureOrArrival(where = 'arrival') {
-  //slob report
+if($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length>0){
 
-  var arrivalTable = $('#currentReport\\.tanks0\\.entity\\.arrivalTank\\.tankNumber').closest('table');
-  var departureTable = $('#currentReport\\.tanks0\\.entity\\.departureTank\\.tankNumber').closest('table');
+  function createCookie(name, value, days) {
+      var expires;
 
-  var inputs = {};
-	
-  var theTable = departureTable;
-  var replaceFrom = 'departure';
-  var replaceTo = 'arrival';
-  if (where == "departure") {
-  	theTable = arrivalTable;
-    replaceFrom = 'arrival';
-    replaceTo = 'departure';    
+      if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toGMTString();
+      } else {
+          expires = "";
+      }
+      document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
   }
 
+  function readCookie(name) {
+      var nameEQ = encodeURIComponent(name) + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) === ' ')
+              c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0)
+              return decodeURIComponent(c.substring(nameEQ.length, c.length));
+      }
+      return null;
+  }
 
-  theTable.find('input[type=text]').each(function() {
-    var keyValue = $(this).attr('name');
-    keyValue = keyValue.replace(replaceFrom, replaceTo);
-    inputs[keyValue] = $(this).val();
-  });
+  function eraseCookie(name) {
+      createCookie(name, "", -1);
+  }
 
-  $.each(inputs, function(key, val) {
-    var selectName = 'input[name="' + key + '"]';
-    $(selectName).val(val);
-  });
+  var obj = {
+    "certifiedThermometer.type": "currentReport\\.report\\.detail\\.certifiedThermometer\\.type",
+    "certifiedThermometer.model": "currentReport\\.report\\.detail\\.certifiedThermometer\\.model"
+  };
 
 
+  function saveEq(){
+    $.each( obj, function( key, value ) {
+      createCookie(key, $('#'+value).val(), 300);
+    });
+  }
 
+  function loadEq(){
+    $.each( obj, function( key, value ) {
+      $('#'+value).val(readCookie(key));
+    });
+  }
+  
+  var button = $('<div class="button" id="uniform-undefined"><span>SAVE<input name="btnSelectFormGroup" tabindex="200" class="btnAddforms" type="button" value="SAVE" style="opacity: 0;"></span></div>');
+
+button.click(function() {
+  saveEq();
+});
+
+$('.group_800').append(button);
+
+button = $('<div class="button" id="uniform-undefined"><span>LOAD<input name="btnSelectFormGroup" tabindex="200" class="btnAddforms" type="button" value="LOAD" style="opacity: 0;"></span></div>');
+
+button.click(function() {
+  loadEq();
+});
+
+$('.group_800').append(button);
+  
+  
 }
 
-var button = $('<div class="button" id="uniform-undefined"><span>Kopieer naar departure ><input name="btnSelectFormGroup" tabindex="200" class="btnAddforms" type="button" value="Sort Tanks" style="opacity: 0;"></span></div>');
 
-button.click(function() {
-  copyToDepartureOrArrival('departure');
-});
-
-$('#tankDIV0').append(button);
-
-var button = $('<div class="button" id="uniform-undefined"><span>Kopieer naar arrival \<<input name="btnSelectFormGroup" tabindex="200" class="btnAddforms" type="button" value="Sort Tanks" style="opacity: 0;"></span></div>');
-
-button.click(function() {
-  copyToDepartureOrArrival();
-});
-
-$('#tankDIV1').append(button);
