@@ -1,3 +1,11 @@
+/*
+TO-DO:
+
+- Unit of Measurement
+- Probe Interface reacted correctly when in contact with water: 
+
+
+*/
 if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length > 0) {
 
   function createCookie(name, value, days) {
@@ -45,6 +53,9 @@ if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length >
     "currentReport.report.detail.intertekThermometer.serial",
     "currentReport.levelReadingIntertekTape",
     "currentReport.levelReadingVesselProbe",
+    "currentReport.vesselsProbeReading",
+    "currentReport.report.detail.intertekProbe.serial",
+    "currentReport.intertekThermometerReading",
     
     
     "datepicker_certifiedThermometer_intertekTape",
