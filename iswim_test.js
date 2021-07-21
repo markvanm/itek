@@ -1,11 +1,3 @@
-/*
-TO-DO:
-
-- Unit of Measurement
-- Probe Interface reacted correctly when in contact with water: 
-
-
-*/
 if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length > 0) {
 
   function createCookie(name, value, days) {
@@ -56,11 +48,11 @@ if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length >
     "currentReport.vesselsProbeReading",
     "currentReport.report.detail.intertekProbe.serial",
     "currentReport.intertekThermometerReading",
-    
-    
+
+
     "datepicker_certifiedThermometer_intertekTape",
     "datepicker_vesselsProbe_intertekTape",
-    
+
     "datepicker_intertekTape_intertekTape1",
     "datepicker_intertekThermometer_intertekTape1"
 
@@ -70,7 +62,7 @@ if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length >
 
   function saveEq() {
     inputArrayCalibration.forEach((key) => {
-      var keyFormatted = key.replace(/\./g, '\\.');     
+      var keyFormatted = key.replace(/\./g, '\\.');
       console.log($('#' + keyFormatted).val());
       createCookie(key, $('#' + keyFormatted).val(), 300);
     });
@@ -83,22 +75,27 @@ if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length >
       var val = readCookie(key);
 
       if ([
-      "datepicker_certifiedThermometer_intertekTape",
-      "datepicker_vesselsProbe_intertekTape",
-      "datepicker_intertekTape_intertekTape1",
-      "datepicker_intertekThermometer_intertekTape1"].includes(key)) {
-      	var yesterday = new Date((new Date()).valueOf() - 1000*60*60*24);
-        
+          "datepicker_certifiedThermometer_intertekTape",
+          "datepicker_vesselsProbe_intertekTape",
+          "datepicker_intertekTape_intertekTape1",
+          "datepicker_intertekThermometer_intertekTape1"
+        ].includes(key)) {
+        var yesterday = new Date((new Date()).valueOf() - 1000 * 60 * 60 * 24);
+
         var dateYesterday = yesterday.getDate() + "/" + (yesterday.getMonth() + 1) + "/" + yesterday.getFullYear();
         val = dateYesterday;
       }
-      
-      console.log(val);
-      console.log(keyFormatted);
+
+
 
       $('#' + keyFormatted).val(val).change().blur();
 
     });
+
+
+    $('#tempSel option[value="Degree Celsius"]').attr('selected', 'selected').trigger('change');
+    $('#heightSel option[value="meters"]').attr('selected', 'selected').trigger('change');
+    $('#interfaceCheck').attr('checked', true).trigger('change').trigger('click');
 
 
   }
