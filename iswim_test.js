@@ -1,3 +1,11 @@
+/*
+TO-DO:
+
+- Unit of Measurement
+- Probe Interface reacted correctly when in contact with water: 
+
+
+*/
 if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length > 0) {
 
   function createCookie(name, value, days) {
@@ -66,6 +74,13 @@ if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length >
       console.log($('#' + keyFormatted).val());
       createCookie(key, $('#' + keyFormatted).val(), 300);
     });
+     var today = new Date();
+
+    var todayWritten = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+        
+    createCookie("EqSaveDate", todayWritten, 300);
+    
+    $('#lastSavedEq').html("Last saved: "+lastSaved);
   }
 
   function loadEq() {
@@ -100,7 +115,7 @@ if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length >
 
   }
 
-  var button = $('<div class="button" id="uniform-undefined"><span>SAVE<input name="btnSelectFormGroup" tabindex="200" class="btnAddforms" type="button" value="SAVE" style="opacity: 0;"></span></div>');
+  var button = $('<div class="button" id="uniform-undefined"><span>SAVE (with current values)<input name="btnSelectFormGroup" tabindex="200" class="btnAddforms" type="button" value="SAVE" style="opacity: 0;"></span></div>');
 
   button.click(function() {
     saveEq();
@@ -108,13 +123,18 @@ if ($('#currentReport\\.report\\.detail\\.certifiedThermometer\\.type').length >
 
   $('.group_800').append(button);
 
-  button = $('<div class="button" id="uniform-undefined"><span>LOAD<input name="btnSelectFormGroup" tabindex="200" class="btnAddforms" type="button" value="LOAD" style="opacity: 0;"></span></div>');
+  button = $('<div class="button" id="uniform-undefined"><span>LOAD (last saved values)<input name="btnSelectFormGroup" tabindex="200" class="btnAddforms" type="button" value="LOAD" style="opacity: 0;"></span></div>');
+
+  
 
   button.click(function() {
-    loadEq();
-  });
+      loadEq();
+    });
 
-  $('.group_800').append(button);
-
+	  var lastSaved = readCookie("EqSaveDate");
+    if(lastSaved != undefined){
+     $('.group_800').append(button);
+     $('.group_800').append("<p id='lastSavedEq'>Last saved: "+lastSaved+"</p>");
+    }
 
 }
